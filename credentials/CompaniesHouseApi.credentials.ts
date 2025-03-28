@@ -7,8 +7,8 @@ export class CompaniesHouseApi implements ICredentialType {
 	name = 'companiesHouseApi';
 	displayName = 'Companies House API';
 	documentationUrl = 'https://developer.company-information.service.gov.uk/';
-	defaultAuthentication = 'basicAuth' as const;
 	type = 'http' as const;
+	defaultAuthentication = 'basicAuth' as const;
 
 	properties: INodeProperties[] = [
 		{
