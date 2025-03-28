@@ -1,17 +1,16 @@
 {
   "name": "n8n-nodes-companies-house",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "n8n community node for Companies House UK",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
   "homepage": "",
-  "description": "n8n community node for Companies House UK",
   "author": {
-  "name": "Ian Carroll",
-  "email": "ian@solutioneers.co.uk"
-},
+    "name": "Ian Carroll",
+    "email": "ian@solutioneers.co.uk"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/yandaq/n8n-nodes-companies-house.git"
@@ -23,7 +22,6 @@
   "packageManager": "pnpm@9.1.4",
   "main": "index.js",
   "scripts": {
-
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
@@ -35,13 +33,13 @@
     "dist"
   ],
   "n8n": {
-  "n8nNodesApiVersion": 1,
-  "credentials": [
-    "dist/credentials/CompaniesHouseApi.credentials.js"
-  ],
-  "nodes": [
-    "dist/nodes/CompaniesHouse/CompaniesHouse.node.js"
-  ]
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/CompaniesHouseApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/CompaniesHouse/CompaniesHouse.node.js"
+    ]
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^7.15.0",
