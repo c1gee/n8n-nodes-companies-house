@@ -53,11 +53,15 @@ export class CompaniesHouse implements INodeType {
 				json: true,
 			};
 
-			const responseData = await this.helpers.httpRequestWithAuthentication.call(
-				this,
-				'companiesHouseApi',
-				options,
-			);
+			const credentials = await this.getCredentials('companiesHouseApi');
+const authHeader = 'Basic ' + Buffer.from(credentials.user + ':').toString('base64');
+
+options.headers = {
+	Authorization: authHeader,
+};
+
+const responseData = await this.helpers.httpRequest.call(this, options);
+
 
 			returnData.push({
 				json: responseData,
