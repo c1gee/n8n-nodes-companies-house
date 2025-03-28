@@ -20,8 +20,7 @@ export class CompaniesHouse implements INodeType {
 		},
 		// eslint-disable-next-line n8n-nodes-base/node-class-description-inputs-wrong-regular-node
 		inputs: [NodeConnectionType.Main],
-		// eslint-disable-next-line n8n-nodes-base/node-class-description-outputs-wrong-regular-node
-		outputs: [NodeConnectionType.Main],
+		outputs: ['main'],
 		credentials: [
 			{
 				name: 'companiesHouseApi',
