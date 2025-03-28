@@ -1,15 +1,16 @@
 import {
 	ICredentialType,
+	INodeProperties,
 } from 'n8n-workflow';
 
 export class CompaniesHouseApi implements ICredentialType {
 	name = 'companiesHouseApi';
 	displayName = 'Companies House API';
 	documentationUrl = 'https://developer.company-information.service.gov.uk/';
-	properties = [
+	properties: INodeProperties[] = [
 		{
 			displayName: 'API Key',
-			name: 'apiKey',
+			name: 'user',
 			type: 'string' as const,
 			default: '',
 			required: true,
@@ -17,14 +18,15 @@ export class CompaniesHouseApi implements ICredentialType {
 				password: true,
 			},
 		},
-	];
-
-	authenticate = {
-		type: 'generic' as const,
-		properties: {
-			headers: {
-				Authorization: '={{"Basic " + Buffer.from($credentials.apiKey + ":").toString("base64")}}',
+		{
+			displayName: 'Password',
+			name: 'password',
+			type: 'string' as const,
+			default: '',
+			required: false,
+			typeOptions: {
+				password: true,
 			},
 		},
-	};
+	];
 }
