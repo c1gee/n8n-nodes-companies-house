@@ -7,8 +7,8 @@ export class CompaniesHouseApi implements ICredentialType {
 	name = 'companiesHouseApi';
 	displayName = 'Companies House API';
 	documentationUrl = 'https://developer.company-information.service.gov.uk/';
-	type = 'http' as const;
-	defaultAuthentication = 'basicAuth' as const;
+	type = 'http' as const; // ✅ Tells n8n this is an HTTP auth credential
+	defaultAuthentication = 'basicAuth' as const; // ✅ Tells n8n to use Basic Auth
 
 	properties: INodeProperties[] = [
 		{
