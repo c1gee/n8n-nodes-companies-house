@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-companies-house",
   "version": "0.1.0",
   "description": "",
   "keywords": [
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/yandaq/n8n-nodes-companies-house.git"
   },
   "engines": {
     "node": ">=18.10",
@@ -22,7 +22,7 @@
   "packageManager": "pnpm@9.1.4",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
+
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
@@ -34,15 +34,13 @@
     "dist"
   ],
   "n8n": {
-    "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
-    ],
-    "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
-    ]
+  "n8nNodesApiVersion": 1,
+  "credentials": [
+    "dist/credentials/CompaniesHouseApi.credentials.js"
+  ],
+  "nodes": [
+    "dist/nodes/CompaniesHouse/CompaniesHouse.node.js"
+  ]
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^7.15.0",
