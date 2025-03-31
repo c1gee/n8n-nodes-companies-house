@@ -4,6 +4,7 @@ import {
   INodeType,
   INodeTypeDescription,
   IHttpRequestOptions,
+  NodeApiError,
 } from 'n8n-workflow';
 
 export class CompaniesHouse implements INodeType {
@@ -29,13 +30,13 @@ export class CompaniesHouse implements INodeType {
         displayName: 'Operation',
         name: 'operation',
         type: 'options',
+        noDataExpression: true,
         options: [
           { name: 'Search Companies', value: 'search' },
           { name: 'Get Company Profile', value: 'getProfile' },
           { name: 'Get Officers', value: 'getOfficers' },
         ],
         default: 'search',
-        description: 'The operation to perform',
       },
       {
         displayName: 'Company Name or Number',
@@ -69,7 +70,7 @@ export class CompaniesHouse implements INodeType {
           endpoint = `/company/${encodeURIComponent(companyInput)}/officers`;
           break;
         default:
-          throw new Error(`Unsupported operation: ${operation}`);
+          throw new NodeApiError(this.getNode(), { message: `Unsupported operation: ${operation}` });
       }
 
       const credentials = await this.getCredentials('companiesHouseApi');
