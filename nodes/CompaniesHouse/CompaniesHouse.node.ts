@@ -35,6 +35,9 @@ export class CompaniesHouse implements INodeType {
           { name: 'Search Companies', value: 'search' },
           { name: 'Get Company Profile', value: 'getProfile' },
           { name: 'Get Officers', value: 'getOfficers' },
+          { name: 'Get Filing History', value: 'getFilingHistory' },
+          { name: 'Get Registered Office Address', value: 'getAddress' },
+          { name: 'Get Persons with Significant Control', value: 'getPSC' },
         ],
         default: 'search',
       },
@@ -44,10 +47,10 @@ export class CompaniesHouse implements INodeType {
         type: 'string',
         default: '',
         required: true,
-        description: 'Company name (for search) or number (for profile/officers)',
+        description: 'Company name (for search) or number (for other endpoints)',
         displayOptions: {
           show: {
-            operation: ['search', 'getProfile', 'getOfficers'],
+            operation: ['search', 'getProfile', 'getOfficers', 'getFilingHistory', 'getAddress', 'getPSC'],
           },
         },
       },
@@ -73,6 +76,15 @@ export class CompaniesHouse implements INodeType {
           break;
         case 'getOfficers':
           endpoint = `/company/${encodeURIComponent(companyInput)}/officers`;
+          break;
+        case 'getFilingHistory':
+          endpoint = `/company/${encodeURIComponent(companyInput)}/filing-history`;
+          break;
+        case 'getAddress':
+          endpoint = `/company/${encodeURIComponent(companyInput)}/registered-office-address`;
+          break;
+        case 'getPSC':
+          endpoint = `/company/${encodeURIComponent(companyInput)}/persons-with-significant-control`;
           break;
         default:
           throw new NodeApiError(this.getNode(), { message: `Unsupported operation: ${operation}` });
