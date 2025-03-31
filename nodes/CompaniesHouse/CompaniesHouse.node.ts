@@ -16,14 +16,13 @@ export class CompaniesHouse implements INodeType {
     icon: 'file:companieshouse.svg',
     group: ['transform'],
     version: 1,
-    description: 'Interact with the UK Companies House API to retrieve company information.',
+    description: 'Interact with the UK Companies House API to retrieve company information',
     subtitle: '={{$parameter["operation"]}}',
     defaults: {
       name: 'Companies House',
     },
     inputs: ['main'],
     outputs: ['main'],
-    // Removed the keywords/tags line entirely
     credentials: [
       {
         name: 'companiesHouseApi',
@@ -36,38 +35,44 @@ export class CompaniesHouse implements INodeType {
         name: 'operation',
         type: 'options',
         noDataExpression: true,
-        description: 'The type of operation to perform.',
+        // Removed description here
         default: 'search',
         options: [
           {
             name: 'Get Company Profile',
             value: 'getProfile',
-            description: 'Retrieve detailed profile information for a specific company.',
+            action: 'Retrieve detailed profile information for a specific company',
+            description: 'Retrieve detailed profile information for a specific company',
           },
           {
             name: 'Get Filing History',
             value: 'getFilingHistory',
-            description: 'Fetch the company filing history including accounts and returns.',
+            action: 'Fetch the company filing history including accounts and returns',
+            description: 'Fetch the company filing history including accounts and returns',
           },
           {
             name: 'Get Officers',
             value: 'getOfficers',
-            description: 'List the company directors and secretaries.',
+            action: 'List the company directors and secretaries',
+            description: 'List the company directors and secretaries',
           },
           {
             name: 'Get Persons with Significant Control',
             value: 'getPsc',
-            description: 'List individuals or entities with significant control over the company.',
+            action: 'List individuals or entities with significant control over the company',
+            description: 'List individuals or entities with significant control over the company',
           },
           {
             name: 'Get Registered Office Address',
             value: 'getAddress',
-            description: 'Retrieve the official registered office address of the company.',
+            action: 'Retrieve the official registered office address of the company',
+            description: 'Retrieve the official registered office address of the company',
           },
           {
             name: 'Search Companies',
             value: 'search',
-            description: 'Search for companies by name.',
+            action: 'Search for companies by name',
+            description: 'Search for companies by name',
           },
         ],
       },
@@ -77,7 +82,7 @@ export class CompaniesHouse implements INodeType {
         type: 'string',
         default: '',
         required: true,
-        description: 'Company name (for search) or registration number (for other operations).',
+        description: 'Company name (for search) or registration number (for other operations)',
       },
     ],
   };
