@@ -37,6 +37,7 @@ export class CompaniesHouse implements INodeType {
           { name: 'Get Officers', value: 'getOfficers' },
         ],
         default: 'search',
+        description: 'Choose the Companies House operation to perform',
       },
       {
         displayName: 'Company Name or Number',
@@ -45,6 +46,11 @@ export class CompaniesHouse implements INodeType {
         default: '',
         required: true,
         description: 'Company name (for search) or number (for profile/officers)',
+        displayOptions: {
+          show: {
+            operation: ['search', 'getProfile', 'getOfficers'],
+          },
+        },
       },
     ],
   };
