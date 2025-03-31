@@ -13,7 +13,7 @@ export class CompaniesHouse implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'Companies House',
     name: 'companiesHouse',
-    icon: 'file:company.svg',
+    icon: 'file:CompaniesHouse.svg',
     group: ['transform'],
     version: 1,
     description: 'Interact with the UK Companies House API to retrieve company information',
