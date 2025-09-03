@@ -1,8 +1,55 @@
-node_modules
-.DS_Store
-.tmp
-tmp
-dist
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+.tmp/
+tmp/
+
+# Logs
+*.log
 npm-debug.log*
-yarn.lock
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (sensitive data)
+.env
+.env.*
+.env.local
+.env.*.local
+
+# TypeScript build info
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE/Editor files
 .vscode/launch.json
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
