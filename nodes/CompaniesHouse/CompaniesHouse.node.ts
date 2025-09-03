@@ -83,6 +83,18 @@ export class CompaniesHouse implements INodeType {
         required: true,
         description: 'Company name (for search) or registration number (for other operations)',
       },
+      {
+        displayName: 'Filter Active Officers Only',
+        name: 'activeOnly',
+        type: 'boolean',
+        default: false,
+        displayOptions: {
+          show: {
+            operation: ['getOfficers'],
+          },
+        },
+        description: 'When enabled, only returns currently active officers/directors',
+      },
     ],
   };
 
@@ -93,6 +105,7 @@ export class CompaniesHouse implements INodeType {
     for (let i = 0; i < items.length; i++) {
       const operation = this.getNodeParameter('operation', i) as string;
       const companyInput = this.getNodeParameter('companyInput', i) as string;
+      const activeOnly = this.getNodeParameter('activeOnly', i, false) as boolean;
 
       let url = '';
       switch (operation) {
@@ -104,6 +117,9 @@ export class CompaniesHouse implements INodeType {
           break;
         case 'getOfficers':
           url = `https://api.company-information.service.gov.uk/company/${companyInput}/officers`;
+          if (activeOnly) {
+            url += '?filter=active';
+          }
           break;
         case 'getFilingHistory':
           url = `https://api.company-information.service.gov.uk/company/${companyInput}/filing-history`;
