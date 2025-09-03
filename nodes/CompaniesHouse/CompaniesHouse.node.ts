@@ -96,19 +96,7 @@ export class CompaniesHouse implements INodeType {
         description: 'When enabled, only returns currently active officers/directors',
       },
       {
-        displayName: 'Filing Type Code',
-        name: 'filingType',
-        type: 'string',
-        default: '',
-        displayOptions: {
-          show: {
-            operation: ['getFilingHistory'],
-          },
-        },
-        description: 'Filter by specific filing type code (e.g., CS01, AA, CH01)',
-      },
-      {
-        displayName: 'Filing Category',
+        displayName: 'Filing Category (API Filter)',
         name: 'filingCategory',
         type: 'options',
         default: '',
@@ -155,10 +143,22 @@ export class CompaniesHouse implements INodeType {
             value: 'miscellaneous',
           },
         ],
-        description: 'Filter by filing category',
+        description: '🚀 API-level filter: Reduces response size and improves speed by filtering server-side',
       },
       {
-        displayName: 'Filing Description',
+        displayName: 'Filing Type Code (Local Filter)',
+        name: 'filingType',
+        type: 'string',
+        default: '',
+        displayOptions: {
+          show: {
+            operation: ['getFilingHistory'],
+          },
+        },
+        description: '🔍 Local filter: Filters results after API response (e.g., CS01, AA, CH01)',
+      },
+      {
+        displayName: 'Filing Description (Local Filter)',
         name: 'filingDescription',
         type: 'options',
         default: '',
@@ -317,7 +317,7 @@ export class CompaniesHouse implements INodeType {
             value: 'change-company-status',
           },
         ],
-        description: 'Filter by specific filing description',
+        description: '🔍 Local filter: Filters results after API response by specific filing description',
       },
     ],
   };
