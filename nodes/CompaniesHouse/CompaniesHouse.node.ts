@@ -5,6 +5,7 @@ import {
   INodeTypeDescription,
   IHttpRequestOptions,
   NodeApiError,
+  NodeConnectionType,
 } from 'n8n-workflow';
 
 import { Buffer } from 'buffer';
@@ -21,8 +22,8 @@ export class CompaniesHouse implements INodeType {
     defaults: {
       name: 'Companies House',
     },
-    inputs: ['main'],
-    outputs: ['main'],
+    inputs: [{ type: NodeConnectionType.Main }],
+    outputs: [{ type: NodeConnectionType.Main }],
     credentials: [
       {
         name: 'companiesHouseApi',
@@ -96,7 +97,7 @@ export class CompaniesHouse implements INodeType {
       const companyInput = this.getNodeParameter('companyInput', i) as string;
 
       const credentials = await this.getCredentials('companiesHouseApi');
-      const authHeader = 'Basic ' + Buffer.from(credentials.user + ':').toString('base64');
+      const authHeader = 'Basic ' + Buffer.from(credentials.apiKey + ':').toString('base64');
 
       let url = '';
       switch (operation) {

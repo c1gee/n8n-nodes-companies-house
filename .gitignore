@@ -48,6 +48,9 @@ pnpm-lock.yaml
 coverage/
 .nyc_output/
 
+# Test results
+test-results/
+
 # Runtime data
 pids/
 *.pid

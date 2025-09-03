@@ -1,6 +1,6 @@
 {
-  "name": "n8n-nodes-companies-house",
-  "version": "0.1.19",
+  "name": "n8n-nodes-companies-house-chris",
+  "version": "1.0.0",
   "description": "n8n community node for Companies House UK",
   "keywords": [
     "n8n-community-node-package"
