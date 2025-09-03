@@ -8,8 +8,6 @@ import {
   NodeConnectionType,
 } from 'n8n-workflow';
 
-import { Buffer } from 'buffer';
-
 export class CompaniesHouse implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'Companies House',
@@ -96,9 +94,6 @@ export class CompaniesHouse implements INodeType {
       const operation = this.getNodeParameter('operation', i) as string;
       const companyInput = this.getNodeParameter('companyInput', i) as string;
 
-      const credentials = await this.getCredentials('companiesHouseApi');
-      const authHeader = 'Basic ' + Buffer.from(credentials.apiKey + ':').toString('base64');
-
       let url = '';
       switch (operation) {
         case 'search':
@@ -126,13 +121,10 @@ export class CompaniesHouse implements INodeType {
       const options: IHttpRequestOptions = {
         method: 'GET',
         url,
-        headers: {
-          Authorization: authHeader,
-        },
         json: true,
       };
 
-      const response = await this.helpers.httpRequest.call(this, options);
+      const response = await this.helpers.httpRequestWithAuthentication.call(this, 'companiesHouseApi', options);
       returnData.push({ json: response });
     }
 
