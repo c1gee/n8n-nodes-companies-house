@@ -95,6 +95,230 @@ export class CompaniesHouse implements INodeType {
         },
         description: 'When enabled, only returns currently active officers/directors',
       },
+      {
+        displayName: 'Filing Type Code',
+        name: 'filingType',
+        type: 'string',
+        default: '',
+        displayOptions: {
+          show: {
+            operation: ['getFilingHistory'],
+          },
+        },
+        description: 'Filter by specific filing type code (e.g., CS01, AA, CH01)',
+      },
+      {
+        displayName: 'Filing Category',
+        name: 'filingCategory',
+        type: 'options',
+        default: '',
+        displayOptions: {
+          show: {
+            operation: ['getFilingHistory'],
+          },
+        },
+        options: [
+          {
+            name: 'All Categories',
+            value: '',
+          },
+          {
+            name: 'Accounts',
+            value: 'accounts',
+          },
+          {
+            name: 'Confirmation Statement',
+            value: 'confirmation-statement',
+          },
+          {
+            name: 'Officers',
+            value: 'officers',
+          },
+          {
+            name: 'Address',
+            value: 'address',
+          },
+          {
+            name: 'Persons with Significant Control',
+            value: 'persons-with-significant-control',
+          },
+          {
+            name: 'Capital',
+            value: 'capital',
+          },
+          {
+            name: 'Resolution',
+            value: 'resolution',
+          },
+          {
+            name: 'Miscellaneous',
+            value: 'miscellaneous',
+          },
+        ],
+        description: 'Filter by filing category',
+      },
+      {
+        displayName: 'Filing Description',
+        name: 'filingDescription',
+        type: 'options',
+        default: '',
+        displayOptions: {
+          show: {
+            operation: ['getFilingHistory'],
+          },
+        },
+        options: [
+          {
+            name: 'All Descriptions',
+            value: '',
+          },
+          {
+            name: '-- Accounts Descriptions --',
+            value: 'accounts-with-accounts-type-total-exemption-full',
+          },
+          {
+            name: 'Accounts - Total Exemption Full',
+            value: 'accounts-with-accounts-type-total-exemption-full',
+          },
+          {
+            name: 'Accounts - Total Exemption Small',
+            value: 'accounts-with-accounts-type-total-exemption-small',
+          },
+          {
+            name: 'Accounts - Micro Entity',
+            value: 'accounts-with-accounts-type-micro-entity',
+          },
+          {
+            name: 'Accounts - Dormant',
+            value: 'accounts-with-accounts-type-dormant',
+          },
+          {
+            name: 'Accounts - Small',
+            value: 'accounts-with-accounts-type-small',
+          },
+          {
+            name: 'Accounts - Medium',
+            value: 'accounts-with-accounts-type-medium',
+          },
+          {
+            name: 'Accounts - Large',
+            value: 'accounts-with-accounts-type-large',
+          },
+          {
+            name: '-- Confirmation Statement Descriptions --',
+            value: 'confirmation-statement-with-no-updates',
+          },
+          {
+            name: 'Confirmation Statement - With No Updates',
+            value: 'confirmation-statement-with-no-updates',
+          },
+          {
+            name: 'Confirmation Statement - With Updates',
+            value: 'confirmation-statement-with-updates',
+          },
+          {
+            name: '-- Officer Descriptions --',
+            value: 'change-person-director-company-with-change-date',
+          },
+          {
+            name: 'Change Person Director',
+            value: 'change-person-director-company-with-change-date',
+          },
+          {
+            name: 'Appoint Person Director',
+            value: 'appoint-person-director-company-with-date',
+          },
+          {
+            name: 'Terminate Person Director',
+            value: 'terminate-person-director-company-with-date',
+          },
+          {
+            name: 'Change Person Secretary',
+            value: 'change-person-secretary-company-with-change-date',
+          },
+          {
+            name: 'Appoint Person Secretary',
+            value: 'appoint-person-secretary-company-with-date',
+          },
+          {
+            name: 'Terminate Person Secretary',
+            value: 'terminate-person-secretary-company-with-date',
+          },
+          {
+            name: '-- Address Descriptions --',
+            value: 'change-registered-office-address-company-with-date-old-address-new-address',
+          },
+          {
+            name: 'Change Registered Office Address - Old & New',
+            value: 'change-registered-office-address-company-with-date-old-address-new-address',
+          },
+          {
+            name: 'Change Registered Office Address - New Address',
+            value: 'change-registered-office-address-company-with-date-new-address',
+          },
+          {
+            name: '-- PSC Descriptions --',
+            value: 'change-to-a-person-with-significant-control',
+          },
+          {
+            name: 'Change to a Person with Significant Control',
+            value: 'change-to-a-person-with-significant-control',
+          },
+          {
+            name: 'Appoint Person with Significant Control',
+            value: 'appoint-person-with-significant-control',
+          },
+          {
+            name: 'Terminate Person with Significant Control',
+            value: 'terminate-person-with-significant-control',
+          },
+          {
+            name: '-- Capital Descriptions --',
+            value: 'allotment-shares',
+          },
+          {
+            name: 'Allotment Shares',
+            value: 'allotment-shares',
+          },
+          {
+            name: 'Return of Allotment Shares',
+            value: 'return-of-allotment-shares',
+          },
+          {
+            name: 'Change Share Class Rights',
+            value: 'change-share-class-rights',
+          },
+          {
+            name: '-- Resolution Descriptions --',
+            value: 'resolution',
+          },
+          {
+            name: 'Resolution',
+            value: 'resolution',
+          },
+          {
+            name: 'Special Resolution',
+            value: 'special-resolution',
+          },
+          {
+            name: '-- Miscellaneous Descriptions --',
+            value: 'change-company-name',
+          },
+          {
+            name: 'Change Company Name',
+            value: 'change-company-name',
+          },
+          {
+            name: 'Change Company Objects',
+            value: 'change-company-objects',
+          },
+          {
+            name: 'Change Company Status',
+            value: 'change-company-status',
+          },
+        ],
+        description: 'Filter by specific filing description',
+      },
     ],
   };
 
@@ -106,6 +330,9 @@ export class CompaniesHouse implements INodeType {
       const operation = this.getNodeParameter('operation', i) as string;
       const companyInput = this.getNodeParameter('companyInput', i) as string;
       const activeOnly = this.getNodeParameter('activeOnly', i, false) as boolean;
+      const filingType = this.getNodeParameter('filingType', i, '') as string;
+      const filingCategory = this.getNodeParameter('filingCategory', i, '') as string;
+      const filingDescription = this.getNodeParameter('filingDescription', i, '') as string;
 
       let url = '';
       switch (operation) {
@@ -123,6 +350,10 @@ export class CompaniesHouse implements INodeType {
           break;
         case 'getFilingHistory':
           url = `https://api.company-information.service.gov.uk/company/${companyInput}/filing-history`;
+          // Only use category filter as it's supported by the API
+          if (filingCategory) {
+            url += `?category=${encodeURIComponent(filingCategory)}`;
+          }
           break;
         case 'getAddress':
           url = `https://api.company-information.service.gov.uk/company/${companyInput}/registered-office-address`;
@@ -141,6 +372,26 @@ export class CompaniesHouse implements INodeType {
       };
 
       const response = await this.helpers.httpRequestWithAuthentication.call(this, 'companiesHouseApi', options);
+      
+      // Apply client-side filtering for filing history
+      if (operation === 'getFilingHistory' && response.items) {
+        let filteredItems = response.items;
+        
+        // Filter by type (client-side)
+        if (filingType) {
+          filteredItems = filteredItems.filter((item: any) => item.type === filingType);
+        }
+        
+        // Filter by description (client-side)
+        if (filingDescription) {
+          filteredItems = filteredItems.filter((item: any) => item.description === filingDescription);
+        }
+        
+        // Update response with filtered items
+        response.items = filteredItems;
+        response.total_count = filteredItems.length;
+      }
+      
       returnData.push({ json: response });
     }
 
