@@ -7,7 +7,7 @@ import {
 
 export class CompaniesHouseApi implements ICredentialType {
 	name = 'companiesHouseApi';
-	displayName = 'Companies House API  API';
+	displayName = 'Companies House API';
 	documentationUrl = 'https://developer.company-information.service.gov.uk/';
 	icon = 'file:CompaniesHouse.svg' as const;
 
