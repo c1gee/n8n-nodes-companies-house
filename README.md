@@ -83,7 +83,7 @@ Or via the n8n UI: **Settings → Community Nodes → Install**.
 
 ## 🙌 Contributing
 
-PRs and ideas welcome. Built by [Ian Carroll](https://github.com/yandaq).
+PRs and ideas welcome. Originally built by [Ian Carroll](https://github.com/yandaq), enhanced and maintained by [Chris Gee](https://github.com/c1gee).
 
 ---
 

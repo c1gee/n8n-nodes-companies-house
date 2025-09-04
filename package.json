@@ -1,7 +1,7 @@
 {
-  "name": "n8n-nodes-companies-house-chris",
+  "name": "@c1gee/n8n-nodes-companies-house",
   "version": "1.0.0",
-  "description": "n8n community node for Companies House UK",
+  "description": "n8n community node for Companies House UK - Enhanced version based on original work by Ian Carroll",
   "keywords": [
     "n8n-community-node-package"
   ],
@@ -11,6 +11,12 @@
     "name": "Chris Gee",
     "email": "chris@b2bea.org"
   },
+  "contributors": [
+    {
+      "name": "Ian Carroll",
+      "email": "ian@solutioneers.co.uk"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/c1gee/n8n-nodes-companies-house.git"
