@@ -1,6 +1,6 @@
 {
   "name": "@c1gee/n8n-nodes-companies-house",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "n8n community node for Companies House UK - Enhanced version based on original work by Ian Carroll",
   "keywords": [
     "n8n-community-node-package"

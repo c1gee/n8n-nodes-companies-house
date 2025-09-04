@@ -299,51 +299,52 @@ export class CompaniesHouse implements INodeType {
     const returnData: INodeExecutionData[] = [];
 
     for (let i = 0; i < items.length; i++) {
-      const operation = this.getNodeParameter('operation', i) as string;
-      const companyInput = this.getNodeParameter('companyInput', i) as string;
-      const activeOnly = this.getNodeParameter('activeOnly', i, false) as boolean;
-      const filingType = this.getNodeParameter('filingType', i, '') as string;
-      const filingCategory = this.getNodeParameter('filingCategory', i, '') as string;
-      const filingDescription = this.getNodeParameter('filingDescription', i, '') as string;
+      try {
+        const operation = this.getNodeParameter('operation', i) as string;
+        const companyInput = this.getNodeParameter('companyInput', i) as string;
+        const activeOnly = this.getNodeParameter('activeOnly', i, false) as boolean;
+        const filingType = this.getNodeParameter('filingType', i, '') as string;
+        const filingCategory = this.getNodeParameter('filingCategory', i, '') as string;
+        const filingDescription = this.getNodeParameter('filingDescription', i, '') as string;
 
-      let url = '';
-      switch (operation) {
-        case 'search':
-          url = `https://api.company-information.service.gov.uk/search/companies?q=${encodeURIComponent(companyInput)}`;
-          break;
-        case 'getProfile':
-          url = `https://api.company-information.service.gov.uk/company/${companyInput}`;
-          break;
-        case 'getOfficers':
-          url = `https://api.company-information.service.gov.uk/company/${companyInput}/officers`;
-          if (activeOnly) {
-            url += '?filter=active';
-          }
-          break;
-        case 'getFilingHistory':
-          url = `https://api.company-information.service.gov.uk/company/${companyInput}/filing-history`;
-          // Only use category filter as it's supported by the API
-          if (filingCategory) {
-            url += `?category=${encodeURIComponent(filingCategory)}`;
-          }
-          break;
-        case 'getAddress':
-          url = `https://api.company-information.service.gov.uk/company/${companyInput}/registered-office-address`;
-          break;
-        case 'getPsc':
-          url = `https://api.company-information.service.gov.uk/company/${companyInput}/persons-with-significant-control`;
-          break;
-        default:
-          throw new NodeApiError(this.getNode(), { message: `Unknown operation: ${operation}` });
-      }
+        let url = '';
+        switch (operation) {
+          case 'search':
+            url = `https://api.company-information.service.gov.uk/search/companies?q=${encodeURIComponent(companyInput)}`;
+            break;
+          case 'getProfile':
+            url = `https://api.company-information.service.gov.uk/company/${companyInput}`;
+            break;
+          case 'getOfficers':
+            url = `https://api.company-information.service.gov.uk/company/${companyInput}/officers`;
+            if (activeOnly) {
+              url += '?filter=active';
+            }
+            break;
+          case 'getFilingHistory':
+            url = `https://api.company-information.service.gov.uk/company/${companyInput}/filing-history`;
+            // Only use category filter as it's supported by the API
+            if (filingCategory) {
+              url += `?category=${encodeURIComponent(filingCategory)}`;
+            }
+            break;
+          case 'getAddress':
+            url = `https://api.company-information.service.gov.uk/company/${companyInput}/registered-office-address`;
+            break;
+          case 'getPsc':
+            url = `https://api.company-information.service.gov.uk/company/${companyInput}/persons-with-significant-control`;
+            break;
+          default:
+            throw new NodeApiError(this.getNode(), { message: `Unknown operation: ${operation}` });
+        }
 
-      const options: IHttpRequestOptions = {
-        method: 'GET',
-        url,
-        json: true,
-      };
+        const options: IHttpRequestOptions = {
+          method: 'GET',
+          url,
+          json: true,
+        };
 
-      const response = await this.helpers.httpRequestWithAuthentication.call(this, 'companiesHouseApi', options);
+        const response = await this.helpers.httpRequestWithAuthentication.call(this, 'companiesHouseApi', options);
       
       // Apply client-side filtering for filing history
       if (operation === 'getFilingHistory' && response.items) {
@@ -365,6 +366,24 @@ export class CompaniesHouse implements INodeType {
       }
       
       returnData.push({ json: response });
+      
+      } catch (error) {
+        // Handle API errors gracefully and route to error output
+        if (this.continueOnFail()) {
+          const errorData = {
+            json: {
+              error: error.message,
+              httpCode: error.httpCode,
+              details: error.description || error.message,
+              timestamp: new Date().toISOString(),
+            },
+            error: error,
+          };
+          returnData.push(errorData);
+        } else {
+          throw error;
+        }
+      }
     }
 
     return [returnData];
