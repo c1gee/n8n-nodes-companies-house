@@ -6,14 +6,14 @@
     "n8n-community-node-package"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/c1gee/n8n-nodes-companies-house#readme",
   "author": {
-    "name": "Ian Carroll",
-    "email": "ian@solutioneers.co.uk"
+    "name": "Chris Gee",
+    "email": "chris@b2bea.org"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yandaq/n8n-nodes-companies-house.git"
+    "url": "https://github.com/c1gee/n8n-nodes-companies-house.git"
   },
   "engines": {
     "node": ">=18.10",
@@ -27,7 +27,7 @@
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",
     "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "prepublishOnly": "npm run build && npm run lint"
   },
   "files": [
     "dist"

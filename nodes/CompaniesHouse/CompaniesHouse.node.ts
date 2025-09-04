@@ -174,7 +174,7 @@ export class CompaniesHouse implements INodeType {
           },
           {
             name: '-- Accounts Descriptions --',
-            value: 'accounts-with-accounts-type-total-exemption-full',
+            value: '-',
           },
           {
             name: 'Accounts - Total Exemption Full',
@@ -206,7 +206,7 @@ export class CompaniesHouse implements INodeType {
           },
           {
             name: '-- Confirmation Statement Descriptions --',
-            value: 'confirmation-statement-with-no-updates',
+            value: '-',
           },
           {
             name: 'Confirmation Statement - With No Updates',
@@ -218,7 +218,7 @@ export class CompaniesHouse implements INodeType {
           },
           {
             name: '-- Officer Descriptions --',
-            value: 'change-person-director-company-with-change-date',
+            value: '-',
           },
           {
             name: 'Change Person Director',
@@ -246,7 +246,7 @@ export class CompaniesHouse implements INodeType {
           },
           {
             name: '-- Address Descriptions --',
-            value: 'change-registered-office-address-company-with-date-old-address-new-address',
+            value: '-',
           },
           {
             name: 'Change Registered Office Address - Old & New',
@@ -258,7 +258,7 @@ export class CompaniesHouse implements INodeType {
           },
           {
             name: '-- PSC Descriptions --',
-            value: 'change-to-a-person-with-significant-control',
+            value: '-',
           },
           {
             name: 'Change to a Person with Significant Control',
@@ -274,7 +274,7 @@ export class CompaniesHouse implements INodeType {
           },
           {
             name: '-- Capital Descriptions --',
-            value: 'allotment-shares',
+            value: '-',
           },
           {
             name: 'Allotment Shares',
@@ -290,7 +290,7 @@ export class CompaniesHouse implements INodeType {
           },
           {
             name: '-- Resolution Descriptions --',
-            value: 'resolution',
+            value: '-',
           },
           {
             name: 'Resolution',
@@ -302,7 +302,7 @@ export class CompaniesHouse implements INodeType {
           },
           {
             name: '-- Miscellaneous Descriptions --',
-            value: 'change-company-name',
+            value: '-',
           },
           {
             name: 'Change Company Name',
