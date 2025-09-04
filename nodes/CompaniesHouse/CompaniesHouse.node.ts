@@ -20,8 +20,8 @@ export class CompaniesHouse implements INodeType {
     defaults: {
       name: 'Companies House',
     },
-    inputs: [{ type: NodeConnectionType.Main }],
-    outputs: [{ type: NodeConnectionType.Main }],
+    inputs: [NodeConnectionType.Main],
+    outputs: [NodeConnectionType.Main],
     credentials: [
       {
         name: 'companiesHouseApi',
@@ -93,7 +93,7 @@ export class CompaniesHouse implements INodeType {
             operation: ['getOfficers'],
           },
         },
-        description: 'When enabled, only returns currently active officers/directors',
+        description: 'Whether to only return currently active officers/directors',
       },
       {
         displayName: 'Filing Category (API Filter)',
@@ -205,20 +205,12 @@ export class CompaniesHouse implements INodeType {
             value: 'accounts-with-accounts-type-large',
           },
           {
-            name: '-- Confirmation Statement Descriptions --',
-            value: '-',
-          },
-          {
             name: 'Confirmation Statement - With No Updates',
             value: 'confirmation-statement-with-no-updates',
           },
           {
             name: 'Confirmation Statement - With Updates',
             value: 'confirmation-statement-with-updates',
-          },
-          {
-            name: '-- Officer Descriptions --',
-            value: '-',
           },
           {
             name: 'Change Person Director',
@@ -245,20 +237,12 @@ export class CompaniesHouse implements INodeType {
             value: 'terminate-person-secretary-company-with-date',
           },
           {
-            name: '-- Address Descriptions --',
-            value: '-',
-          },
-          {
             name: 'Change Registered Office Address - Old & New',
             value: 'change-registered-office-address-company-with-date-old-address-new-address',
           },
           {
             name: 'Change Registered Office Address - New Address',
             value: 'change-registered-office-address-company-with-date-new-address',
-          },
-          {
-            name: '-- PSC Descriptions --',
-            value: '-',
           },
           {
             name: 'Change to a Person with Significant Control',
@@ -273,10 +257,6 @@ export class CompaniesHouse implements INodeType {
             value: 'terminate-person-with-significant-control',
           },
           {
-            name: '-- Capital Descriptions --',
-            value: '-',
-          },
-          {
             name: 'Allotment Shares',
             value: 'allotment-shares',
           },
@@ -289,20 +269,12 @@ export class CompaniesHouse implements INodeType {
             value: 'change-share-class-rights',
           },
           {
-            name: '-- Resolution Descriptions --',
-            value: '-',
-          },
-          {
             name: 'Resolution',
             value: 'resolution',
           },
           {
             name: 'Special Resolution',
             value: 'special-resolution',
-          },
-          {
-            name: '-- Miscellaneous Descriptions --',
-            value: '-',
           },
           {
             name: 'Change Company Name',
